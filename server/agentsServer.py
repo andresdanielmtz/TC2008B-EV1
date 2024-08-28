@@ -131,14 +131,17 @@ with onto:
 
     class Robot(Entity):
         pass
-    class Box(Entity):
-        pass
-    class BoxPile(Box):
+
+    class BoxPile(Entity):
         pass
 
     class has_position(DataProperty):
         domain = [Entity]
         range = [str]
+
+    class has_boxes(DataProperty):
+        domain = [BoxPile]
+        range = [int]
 
     class has_action(DataProperty):
         domain = [Robot]
@@ -146,7 +149,7 @@ with onto:
 
     class has_grabbed_box(ObjectProperty):
         domain = [Robot]
-        range = [Box]
+        range = [BoxPile]
 
 onto.save(file="onto.owl", format = "rdfxml")
 
